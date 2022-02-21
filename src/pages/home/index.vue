@@ -1,6 +1,9 @@
-<template>
-    <div>
-        123
+<template lang="html">
+    <div class="home-page">
+        <van-nav-bar
+        title="标题"
+        left-arrow
+        />
     </div>
 </template>
 
@@ -14,6 +17,8 @@ export default {
 }
 </script>
 
-<style >
-
+<style lang="scss">
+    .home-page {
+        height: 100%;
+    }
 </style>
