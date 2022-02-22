@@ -1,5 +1,5 @@
 <template>
-    <div class="login-pages">
+    <div class="user-pages">
         <div class="content">
             123
         </div>
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-    .login-pages {
+    .user-pages {
         height: 100%;
     }
 </style>
