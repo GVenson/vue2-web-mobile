@@ -1,9 +1,8 @@
 import router from '@/router';
 import store from '@/store';
 
-console.log('beforeEach');
 router.beforeEach((to, from, next) => {
-    console.log(to);
+    console.log('beforeEach', to, from, store);
     if (to.meta) {
         store.commit('TITLE', to.meta.title);
         // if (to.meta.titleBgColor) {
