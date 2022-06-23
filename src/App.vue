@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition name="fade">
+    <transition name="slide-fade">
       <div ref="navBar" class="head">
           <van-nav-bar
           v-show="!isHeader"
@@ -10,7 +10,7 @@
           />
       </div>
     </transition>
-    <transition name="fade">
+    <transition name="slide-fade">
         <router-view class="router-view" :class="{'no-header': isHeader}"></router-view>
     </transition>
     <van-tabbar v-model="active" @change="tabBarChange">
@@ -28,11 +28,17 @@ export default {
     name: 'App',
     data() {
         return {
-            active: 0
+            active: 0,
+            animation: ''
         }
     },
     components: {
       // HelloWorld
+    },
+    watch: {
+        $route(to, from) {
+            console.log('$route',to, from)
+        }
     },
     computed: {
         ...mapState({
@@ -68,6 +74,9 @@ export default {
     },
     created() {
         console.log('this', this);
+        this.$router.push({
+            name: 'Home'
+        })
     }
 }
 </script>
@@ -82,10 +91,25 @@ body {
 
     .router-view {
         height: calc(100% - 96px);
+        overflow: hidden;
 
         &.no-header {
             height: calc(100% - 50px);
+            overflow: hidden;
         }
+    }
+
+    .slide-fade-enter-active {
+        transition: all 1s ease;
+    }
+    .slide-fade-leave-active {
+        // transition: all 1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        display: none;
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+        // transform: translateX(10px);
+        opacity: 0;
     }
 }
 </style>
