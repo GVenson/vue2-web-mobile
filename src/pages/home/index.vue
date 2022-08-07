@@ -9,9 +9,14 @@
         <div class="content">
             <van-notice-bar color="#1989fa" background="#ecf9ff" scrollable text="技术是开发它的人的共同灵魂。" />
             <van-grid :gutter="5">
-                <van-grid-item v-for="value in 8" :key="value" icon="photo-o" text="文字" />
+                <van-grid-item v-for="(value, index) of list" :key="index" icon="photo-o" :text="value.title" :to="value.route" />
             </van-grid>
         </div>
+        <van-tabbar v-model="active" @change="tabBarChange">
+            <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+            <!-- <van-tabbar-item icon="search">标签</van-tabbar-item> -->
+            <van-tabbar-item icon="user-o">我</van-tabbar-item>
+    </van-tabbar>
     </div>
 </template>
 
@@ -21,6 +26,10 @@ export default {
     data() {
         return {
             active: 0,
+            list: [{
+                title: '游戏',
+                route: '/game',
+            }]
         }
     },
     computed: {
@@ -32,7 +41,18 @@ export default {
         console.log('this', this);
     },
     methods: {
-        
+        tabBarChange(item) {
+            console.log('tabBarChange', item)
+            if(item === 0) {
+              this.$router.push({
+                  name: 'Home',
+              })
+            } else if(item === 1) {
+              this.$router.push({
+                  name: 'User',
+              })
+            }
+        },
     },
     created() {
     }

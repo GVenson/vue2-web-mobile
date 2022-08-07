@@ -13,11 +13,6 @@
     <transition name="slide-fade">
         <router-view class="router-view" :class="{'no-header': isHeader}"></router-view>
     </transition>
-    <van-tabbar v-model="active" @change="tabBarChange">
-        <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-        <!-- <van-tabbar-item icon="search">标签</van-tabbar-item> -->
-        <van-tabbar-item icon="user-o">我</van-tabbar-item>
-    </van-tabbar>
   </div>
 </template>
 
@@ -59,24 +54,12 @@ export default {
             console.log('pageBack', window.history.go)
             window.history.go(-1);
         },
-        tabBarChange(item) {
-            console.log('tabBarChange', item)
-            if(item === 0) {
-              this.$router.push({
-                  name: 'Home',
-              })
-            } else if(item === 1) {
-              this.$router.push({
-                  name: 'User',
-              })
-            }
-        },
     },
     created() {
         console.log('this', this);
-        this.$router.push({
-            name: 'Home'
-        })
+        // this.$router.push({
+        //     name: 'Home'
+        // })
     }
 }
 </script>

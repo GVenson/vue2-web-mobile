@@ -24,5 +24,12 @@ export default new Router({
         meta: {
             title: '我'
         }
-    }]
+    },{
+        path: '/game',
+        name: 'Game',
+        component: () => import('@/pages/game/color'),
+        meta: {
+            title: '色块游戏'
+        }
+    },]
 })
